@@ -1,5 +1,5 @@
 # GoalPost
-This project demonstrates the Model-View-Controller (MVC) architecture and CoreData on IOS
+This project demonstrates the **Model-View-Controller (MVC)** architecture and **CoreData** on IOS
 GoalPost is a application which helps you manage and achieve your goals
 
 <br/>
