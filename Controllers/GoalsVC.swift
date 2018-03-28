@@ -15,6 +15,8 @@ class GoalsVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
+    var goals: [Goal] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -47,6 +49,22 @@ extension GoalsVC: UITableViewDelegate, UITableViewDataSource {
         }
         cell.configureCell(description: "Eat salad twice a week", type: .longTerm, goalProgressAmount: 2)
         return cell
+    }
+}
+
+extension GoalsVC {
+    func fetch(completion: (_ complete: Bool) -> ()) {
+        guard let managedContext = appDelegate?.persistentContainer.viewContext else {return}
+        
+        let fetchRequest = NSFetchRequest<Goal>(entityName: "Goal")
+        do {
+            goals = try managedContext.fetch(fetchRequest)
+            print("Successfully fetch data")
+            completion(true)
+        } catch {
+            completion(false)
+            debugPrint("Could not fetch: \(error.localizedDescription)")
+        }
     }
 }
 

@@ -24,7 +24,6 @@ extension UIViewController {
         transition.duration = 0.3
         transition.type = kCATransitionPush
         transition.subtype = kCATransitionFromRight
-        self.view.window?.layer.add(transition, forKey: kCATransition)
         
         guard let presentedViewController = presentedViewController else { return }
         presentedViewController.dismiss(animated: false) {
